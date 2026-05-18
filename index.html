@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en"><head>
+<html class="scroll-smooth dark" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Lapiyano.Dev | Software Developer Portfolio</title>
@@ -14,12 +14,18 @@
 <!-- Tailwind Configuration -->
 <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
             primary: '#b4c5ff',
             dark: '#0a0c12',
             card: '#161b22',
+            // Light mode specific colors (overridden via class)
+            lightBg: '#f8fafc',
+            lightCard: '#ffffff',
+            lightText: '#1e293b',
+            lightTextSecondary: '#475569',
           },
           fontFamily: {
             sans: ['Hanken Grotesk', 'sans-serif'],
@@ -40,23 +46,55 @@
     }
   </script>
 <!-- Custom Styles -->
-  <link rel="stylesheet" href="assets/css/magnific-popup.css">
-  <style data-purpose="custom-utilities">    .glass-effect {
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<style data-purpose="custom-utilities">
+    /* Base transitions for smooth theme switching */
+    * {
+      transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+      transition-duration: 200ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Dark mode glass effect */
+    .dark .glass-effect {
       background: rgba(22, 27, 34, 0.7);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(180, 197, 255, 0.1);
     }
-    .hero-bg {
+    
+    /* Light mode glass effect */
+    .light .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Hero backgrounds */
+    .dark .hero-bg {
       background-image: linear-gradient(rgba(10, 12, 18, 0.6), rgba(10, 12, 18, 0.9)), url('assets/hero/hero_backround_dark.png');
       background-position: center;
       background-size: cover;
     }
+    
+    .light .hero-bg {
+      background-image: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.95)), url('assets/hero/hero_backround_light.png');
+      background-position: center;
+      background-size: cover;
+    }
+    
     .text-glow {
       text-shadow: 0 0 10px rgba(180, 197, 255, 0.3);
     }
+    
+    .light .text-glow {
+      text-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+    }
+    
     .hide-scrollbar::-webkit-scrollbar {
       display: none;
     }
+    
     /* Modal Styles */
     .white-popup {
       position: relative;
@@ -70,6 +108,13 @@
       overflow: hidden;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     }
+    
+    .light .white-popup {
+      background: #ffffff;
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+    
     .modal-image-container {
       background: rgba(0, 0, 0, 0.3);
       display: flex;
@@ -78,6 +123,11 @@
       padding: 2rem;
       min-height: 400px;
     }
+    
+    .light .modal-image-container {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    
     .modal-image-container img {
       width: 100%;
       height: auto;
@@ -86,17 +136,29 @@
       border-radius: 0.75rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
+    
     .mfp-bg {
       background: #0a0c12;
       opacity: 0.95;
       backdrop-filter: blur(8px);
     }
+    
+    .light .mfp-bg {
+      background: #f8fafc;
+      opacity: 0.98;
+    }
+    
     .mfp-close {
       color: #b4c5ff !important;
       top: 15px;
       right: 15px;
       font-size: 30px;
     }
+    
+    .light .mfp-close {
+      color: #3b82f6 !important;
+    }
+    
     @media (max-width: 768px) {
       .modal-image-container {
         padding: 1rem;
@@ -112,9 +174,140 @@
         margin-bottom: 32px !important;
       }
     }
+    
+    /* Light mode specific card styles */
+    .light .bg-card {
+      background-color: #ffffff;
+      border-color: #e2e8f0;
+    }
+    
+    .light .bg-card\/50 {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .light .bg-dark {
+      background-color: #f8fafc;
+    }
+    
+    .light .bg-dark\/30 {
+      background-color: rgba(241, 245, 249, 0.5);
+    }
+    
+    .light .bg-dark\/50 {
+      background-color: rgba(241, 245, 249, 0.5);
+    }
+    
+    .light .border-white\/5 {
+      border-color: #e2e8f0;
+    }
+    
+    .light .border-white\/10 {
+      border-color: #cbd5e1;
+    }
+    
+    .light .border-white\/20 {
+      border-color: #cbd5e1;
+    }
+    
+    .light .text-slate-400 {
+      color: #475569;
+    }
+    
+    .light .text-slate-500 {
+      color: #64748b;
+    }
+    
+    .light .text-slate-300 {
+      color: #334155;
+    }
+    
+    .light .text-slate-200 {
+      color: #1e293b;
+    }
+    
+    .light .bg-primary\/10 {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+    
+    .light .bg-primary\/5 {
+      background-color: rgba(59, 130, 246, 0.05);
+    }
+    
+    .light .bg-white\/5 {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    .light .shadow-primary\/10 {
+      --tw-shadow-color: rgba(59, 130, 246, 0.2);
+    }
+    
+    /* Primary color adapt for light mode */
+    .light .text-primary {
+      color: #3b82f6;
+    }
+    
+    .light .border-primary\/30 {
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    
+    .light .border-primary\/20 {
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+    
+    .light .border-primary\/40 {
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+    
+    .light .bg-primary {
+      background-color: #3b82f6;
+      color: white;
+    }
+    
+    .light .bg-primary:hover {
+      background-color: #2563eb;
+    }
+    
+    .light .hover\:bg-primary\/10:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+    
+    .light .ring-primary {
+      --tw-ring-color: #3b82f6;
+    }
+    
+    /* Input styles for light mode */
+    .light input, .light textarea {
+      background-color: #ffffff;
+      border-color: #e2e8f0;
+      color: #1e293b;
+    }
+    
+    .light input:focus, .light textarea:focus {
+      border-color: #3b82f6;
+      ring-color: #3b82f6;
+    }
+    
+    /* Light mode hover effects */
+    .light .hover\:border-primary\/40:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+    
+    .light .hover\:text-primary:hover {
+      color: #3b82f6;
+    }
+    
+    /* Theme toggle button animation */
+    .theme-toggle {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
-<body class="bg-dark text-slate-200 font-sans selection:bg-primary/30 selection:text-white">
+<body class="bg-dark text-slate-200 font-sans selection:bg-primary/30 selection:text-white dark:bg-dark dark:text-slate-200 light:bg-lightBg light:text-lightText">
 <!-- BEGIN: MainHeader -->
 <header class="fixed top-0 w-full z-50 glass-effect transition-all duration-300" id="main-header">
 <nav class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center transition-all duration-300" id="main-nav">
@@ -127,9 +320,20 @@
 <li><a class="hover:text-primary transition-colors" href="#projects">Projects</a></li>
 <li><a class="hover:text-primary transition-colors" href="#contact">Contact</a></li>
 </ul>
-<a class="px-4 py-1.5 bg-primary text-dark text-sm font-bold rounded-full hover:bg-white transition-all transform hover:scale-105" href="#contact">
+<div class="flex items-center gap-4">
+<!-- Theme Toggle Button -->
+<button id="theme-toggle" class="theme-toggle p-2 rounded-full glass-effect border border-primary/20 text-primary hover:scale-105 transition-all" aria-label="Toggle theme">
+  <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+  </svg>
+  <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+  </svg>
+</button>
+<a class="px-4 py-1.5 bg-primary text-dark text-sm font-bold rounded-full hover:bg-white transition-all transform hover:scale-105 dark:text-dark light:text-white" href="#contact">
         Hire Me
       </a>
+</div>
 </nav>
 </header>
 <!-- END: MainHeader -->
@@ -146,11 +350,11 @@
               <span id="typewriter-text"></span><span class="animate-pulse">|</span>
             </span>
 </h1>
-<p class="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed">
+<p class="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed dark:text-slate-400 light:text-slate-600">
             Passionate about technology and innovation, I’m a developer and computer science student focused on building impactful digital solutions. I enjoy creating modern web applications and exploring artificial intelligence.
           </p>
 <div class="flex flex-wrap gap-4">
-<a class="px-8 py-4 bg-primary text-dark font-bold rounded-lg hover:shadow-[0_0_20px_rgba(180,197,255,0.4)] transition-all" href="#contact">
+<a class="px-8 py-4 bg-primary text-dark font-bold rounded-lg hover:shadow-[0_0_20px_rgba(180,197,255,0.4)] transition-all dark:text-dark light:text-white" href="#contact">
               Got a project?
             </a>
 <a class="px-8 py-4 border border-primary/30 text-primary font-bold rounded-lg hover:bg-primary/10 transition-all" href="#">
@@ -174,18 +378,11 @@
 </div>
 </section>
 <!-- END: HeroSection -->
-<style>
-  @media (max-width: 768px) {
-    #home {
-      margin-bottom: 80px !important;
-    }
-  }
-</style>
 <!-- BEGIN: TechStack -->
-<section class="py-2 md:py-4 bg-dark/50 border-y border-white/5 overflow-hidden tech-stack-section">
+<section class="py-2 md:py-4 bg-dark/50 border-y border-white/5 overflow-hidden tech-stack-section dark:bg-dark/50 light:bg-gray-100">
 <div class="flex whitespace-nowrap animate-scroll">
 <div class="flex space-x-4 px-4 items-center">
-<!-- Tech Plls Set 1 -->
+<!-- Tech Pills Set 1 -->
 <span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">JavaScript</span>
 <span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Java</span>
 <span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Node.js</span>
@@ -198,7 +395,7 @@
 <span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Machine Learning</span>
 </div>
 <div class="flex space-x-4 px-4 items-center">
-<!-- Tech Plls Set 2 (Duplicate for loop) -->
+<!-- Tech Pills Set 2 (Duplicate for loop) -->
 <span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">JavaScript</span>
 <span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Java</span>
 <span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Node.js</span>
@@ -219,41 +416,41 @@
 <!-- Bio Column -->
 <div class="lg:col-span-5 space-y-6">
 <h2 class="text-4xl font-bold">About <span class="text-primary">Me</span></h2>
-<p class="text-slate-400 text-lg leading-relaxed">
+<p class="text-slate-400 text-lg leading-relaxed dark:text-slate-400 light:text-slate-600">
             Passionate about technology and innovation, I’m a developer and computer science student focused on building impactful digital solutions. I enjoy creating modern web applications, exploring artificial intelligence and machine learning, and continuously expanding my skills across software development. Driven by curiosity and problem-solving, I’m committed to developing innovative technologies that combine creativity, functionality, and real-world value.
           </p>
-<div class="p-6 bg-card/50 rounded-2xl border border-white/5">
+<div class="p-6 bg-card/50 rounded-2xl border border-white/5 dark:bg-card/50 light:bg-gray-50 light:border-gray-200">
 <h3 class="font-bold text-primary mb-2">My Philosophy</h3>
-<p class="text-sm italic">"Clean code is not just written; it's engineered with purpose and refined with passion."</p>
+<p class="text-sm italic dark:text-slate-400 light:text-slate-600">"Clean code is not just written; it's engineered with purpose and refined with passion."</p>
 </div>
 </div>
 <!-- Bento Grid Services -->
 <div class="lg:col-span-7 grid md:grid-cols-2 gap-4" data-purpose="services-grid">
-<div class="p-8 bg-card rounded-3xl border border-white/5 flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="p-8 bg-card rounded-3xl border border-white/5 flex flex-col justify-between hover:border-primary/40 transition-colors dark:bg-card light:bg-white light:border-gray-200">
 <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
-<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </div>
 <div>
 <h4 class="text-xl font-bold mb-2">Website Development</h4>
-<p class="text-slate-400 text-sm">Responsive, SEO-optimized, and high-performance web applications using the latest tech stacks.</p>
+<p class="text-slate-400 text-sm dark:text-slate-400 light:text-slate-600">Responsive, SEO-optimized, and high-performance web applications using the latest tech stacks.</p>
 </div>
 </div>
-<div class="p-8 bg-card rounded-3xl border border-white/5 flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="p-8 bg-card rounded-3xl border border-white/5 flex flex-col justify-between hover:border-primary/40 transition-colors dark:bg-card light:bg-white light:border-gray-200">
 <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
-<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </div>
 <div>
 <h4 class="text-xl font-bold mb-2">App Development</h4>
-<p class="text-slate-400 text-sm">Creating seamless mobile experiences for iOS and Android with cross-platform frameworks.</p>
+<p class="text-slate-400 text-sm dark:text-slate-400 light:text-slate-600">Creating seamless mobile experiences for iOS and Android with cross-platform frameworks.</p>
 </div>
 </div>
-<div class="md:col-span-2 p-8 bg-card rounded-3xl border border-white/5 flex items-center gap-6 hover:border-primary/40 transition-colors">
+<div class="md:col-span-2 p-8 bg-card rounded-3xl border border-white/5 flex items-center gap-6 hover:border-primary/40 transition-colors dark:bg-card light:bg-white light:border-gray-200">
 <div class="shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary">
-<svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </div>
 <div>
 <h4 class="text-xl font-bold mb-1">ML Solutions</h4>
-<p class="text-slate-400 text-sm">Implementing intelligent features, predictive modeling, and data-driven automation into your existing products.</p>
+<p class="text-slate-400 text-sm dark:text-slate-400 light:text-slate-600">Implementing intelligent features, predictive modeling, and data-driven automation into your existing products.</p>
 </div>
 </div>
 </div>
@@ -261,51 +458,49 @@
 </section>
 <!-- END: AboutSection -->
 <!-- BEGIN: ProjectsSection -->
-<section class="py-24 bg-dark/30" id="projects">
+<section class="py-24 bg-dark/30 dark:bg-dark/30 light:bg-gray-100" id="projects">
 <div class="max-w-7xl mx-auto px-6">
 <div class="flex justify-between items-end mb-12">
 <div>
 <h2 class="text-4xl font-bold mb-2">Featured <span class="text-primary">Projects</span></h2>
-<p class="text-slate-400">Experimental, Academic & Personal Ventures.</p>
+<p class="text-slate-400 dark:text-slate-400 light:text-slate-600">Experimental, Academic & Personal Ventures.</p>
 </div>
 </div>
 <div class="grid md:grid-cols-2 gap-8">
 <!-- Project Card 1 -->
-<div class="group relative bg-card rounded-3xl border border-white/5 overflow-hidden hover:border-primary/40 transition-all">
+<div class="group relative bg-card rounded-3xl border border-white/5 overflow-hidden hover:border-primary/40 transition-all dark:bg-card light:bg-white light:border-gray-200">
 <div class="aspect-video bg-slate-800 overflow-hidden">
 <img alt="Synthetics & Forex Calculator Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/projects/project1.png"/>
 </div>
-<!-- Maximize Button -->
 <div class="absolute bottom-4 right-4 z-20">
-  <a href="#project-modal-1" class="project-modal-trigger bg-dark/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center" title="Project Details">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+  <a href="#project-modal-1" class="project-modal-trigger bg-white/60 dark:bg-dark/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
   </a>
 </div>
 <div class="p-8">
 <span class="text-xs font-mono text-primary uppercase tracking-widest">Financial Tech • React</span>
 <h3 class="text-2xl font-bold mt-2 mb-4">Synthetics &amp; Forex Calculator</h3>
-<p class="text-slate-400 mb-6">A precision trading calculator app for Synthetics & Forex traders. Features real-time price access, advanced stop loss/take profit, pip and commission calculators, and custom asset settings for informed trading decisions.</p>
+<p class="text-slate-400 mb-6 dark:text-slate-400 light:text-slate-600">A precision trading calculator app for Synthetics & Forex traders. Features real-time price access, advanced stop loss/take profit, pip and commission calculators, and custom asset settings for informed trading decisions.</p>
 <div class="flex gap-4">
-<a class="text-primary hover:underline font-bold" href="https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator" target="_blank" rel="noopener">View Playstore →</a>
+<a class="text-primary hover:underline font-bold" href="https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator" target="_blank">View Playstore →</a>
 <a class="text-primary hover:underline font-bold" href="#">About This App →</a>
 </div>
 </div>
 </div>
 <!-- Project Card 2 -->
-<div class="group relative bg-card rounded-3xl border border-white/5 overflow-hidden hover:border-primary/40 transition-all">
+<div class="group relative bg-card rounded-3xl border border-white/5 overflow-hidden hover:border-primary/40 transition-all dark:bg-card light:bg-white light:border-gray-200">
 <div class="aspect-video bg-slate-800 overflow-hidden">
 <img alt="Assistive Graph-Based Navigation Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/projects/project2a.png"/>
 </div>
-<!-- Maximize Button -->
 <div class="absolute bottom-4 right-4 z-20">
-  <a href="#project-modal-2" class="project-modal-trigger bg-dark/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center" title="Project Details">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+  <a href="#project-modal-2" class="project-modal-trigger bg-white/60 dark:bg-dark/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
   </a>
 </div>
 <div class="p-8">
 <span class="text-xs font-mono text-primary uppercase tracking-widest">Java • Python • Machine Learning</span>
 <h3 class="text-2xl font-bold mt-2 mb-4">Assistive Graph-Based Navigation</h3>
-<p class="text-slate-400 mb-6">Computer vision system for the visually impaired, analyzing ground images with graph-based methods to identify safe paths, obstacles, and stairs. Combines Sobel edge detection and spatial graph encoding.</p>
+<p class="text-slate-400 mb-6 dark:text-slate-400 light:text-slate-600">Computer vision system for the visually impaired, analyzing ground images with graph-based methods to identify safe paths, obstacles, and stairs. Combines Sobel edge detection and spatial graph encoding.</p>
 <div class="flex gap-4">
 <a class="text-primary hover:underline font-bold" href="#">About This Project →</a>
 </div>
@@ -319,27 +514,26 @@
 <section class="py-24 max-w-7xl mx-auto px-6">
 <h2 class="text-4xl font-bold mb-12 text-center">Client <span class="text-primary">Deliverables</span></h2>
 <div class="max-w-7xl mx-auto">
-  <div class="bg-card p-1 border border-white/10 rounded-[2rem] w-full">
-    <div class="bg-dark p-8 md:p-12 rounded-[1.8rem] flex flex-col md:flex-row gap-12 items-center relative">
+  <div class="bg-card p-1 border border-white/10 rounded-[2rem] w-full dark:bg-card light:bg-white light:border-gray-200">
+    <div class="bg-dark p-8 md:p-12 rounded-[1.8rem] flex flex-col md:flex-row gap-12 items-center relative dark:bg-dark light:bg-gray-50">
       <div class="w-full md:w-1/3 aspect-square bg-primary/5 rounded-2xl flex items-center justify-center overflow-hidden">
         <img alt="DPM Academy Management System" class="w-full h-full object-cover" src="assets/projects/project_client_1_dpm.png"/>
       </div>
       <div class="flex-1">
         <h3 class="text-3xl font-bold mb-4">DPM Academy Management System</h3>
-        <p class="text-slate-400 text-lg mb-6 leading-relaxed">
+        <p class="text-slate-400 text-lg mb-6 leading-relaxed dark:text-slate-400 light:text-slate-600">
           A bespoke, enterprise-grade digital ecosystem custom-engineered for DPM Academy. Automates student recruitment, tutor vetting, South African-specific academic scheduling, and recurring billing.
         </p>
         <div class="flex flex-wrap gap-3 mb-6">
-          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300">Django</span>
-          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300">Next.js</span>
-          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300">Enterprise</span>
+          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300 dark:bg-white/5 light:bg-gray-200 light:text-slate-700">Django</span>
+          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300 dark:bg-white/5 light:bg-gray-200 light:text-slate-700">Next.js</span>
+          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300 dark:bg-white/5 light:bg-gray-200 light:text-slate-700">Enterprise</span>
         </div>
-        <a class="text-primary hover:underline font-bold" href="https://www.dpmacademy.co.za" target="_blank" rel="noopener">Visit DPM Academy →</a>
+        <a class="text-primary hover:underline font-bold" href="https://www.dpmacademy.co.za" target="_blank">Visit DPM Academy →</a>
       </div>
-      <!-- Maximize Button -->
       <div class="absolute bottom-6 right-6 z-20">
-        <a href="#project-modal-3" class="project-modal-trigger bg-card/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center" title="Project Details">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+        <a href="#project-modal-3" class="project-modal-trigger bg-white/60 dark:bg-dark/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
         </a>
       </div>
     </div>
@@ -348,28 +542,27 @@
 </section>
 <!-- END: ClientProjects -->
 <!-- BEGIN: ContactSection -->
-<section class="py-24 bg-dark relative overflow-hidden" id="contact">
-<!-- Decorative element -->
+<section class="py-24 bg-dark relative overflow-hidden dark:bg-dark light:bg-gray-100" id="contact">
 <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
 <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
 <h2 class="text-4xl font-bold mb-4">Let's <span class="text-primary">Collaborate</span></h2>
-<p class="text-slate-400 mb-12">Have a vision? Let’s bring it to life together.</p>
+<p class="text-slate-400 mb-12 dark:text-slate-400 light:text-slate-600">Have a vision? Let’s bring it to life together.</p>
 <form class="space-y-6 text-left" data-purpose="contact-form">
 <div class="grid md:grid-cols-2 gap-6">
 <div class="space-y-2">
 <label class="block text-sm font-medium text-slate-400" for="name">Your Name</label>
-<input class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4" id="name" name="name" placeholder="John Doe" type="text"/>
+<input class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4 dark:bg-card light:bg-white light:text-slate-900 light:border-gray-300" id="name" name="name" placeholder="John Doe" type="text"/>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-slate-400" for="email">Email Address</label>
-<input class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4" id="email" name="email" placeholder="john@example.com" type="email"/>
+<input class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4 dark:bg-card light:bg-white light:text-slate-900 light:border-gray-300" id="email" name="email" placeholder="john@example.com" type="email"/>
 </div>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-slate-400" for="message">Message</label>
-<textarea class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4" id="message" name="message" placeholder="Tell me about your project..." rows="5"></textarea>
+<textarea class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4 dark:bg-card light:bg-white light:text-slate-900 light:border-gray-300" id="message" name="message" placeholder="Tell me about your project..." rows="5"></textarea>
 </div>
-<button class="w-full py-4 bg-primary text-dark font-bold rounded-xl hover:bg-white transition-all transform active:scale-95 shadow-xl shadow-primary/10" type="submit">
+<button class="w-full py-4 bg-primary text-dark font-bold rounded-xl hover:bg-white transition-all transform active:scale-95 shadow-xl shadow-primary/10 dark:text-dark light:text-white" type="submit">
             Send Message
           </button>
 </form>
@@ -378,27 +571,67 @@
 <!-- END: ContactSection -->
 </main>
 <!-- BEGIN: Footer -->
-<footer class="py-12 border-t border-white/5 bg-dark">
+<footer class="py-12 border-t border-white/5 bg-dark dark:bg-dark light:bg-white light:border-gray-200">
 <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-<div class="text-slate-500 text-sm">
-        © 2026 <span class="font-bold text-slate-300">Lapiyano Manganhe</span>. All rights reserved.
+<div class="text-slate-500 text-sm dark:text-slate-500 light:text-slate-500">
+        © 2026 <span class="font-bold text-slate-300 dark:text-slate-300 light:text-slate-700">Lapiyano Manganhe</span>. All rights reserved.
       </div>
 <div class="flex space-x-6">
-<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#">
-<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.623 0-3.131-.469-4.398-1.275 1.636.191 3.261-.272 4.629-1.314-1.354-.027-2.497-.914-2.891-2.138.189.03.381.047.577.047.319 0 .627-.044.917-.124-1.415-.283-2.482-1.531-2.482-3.031v-.038c.416.232.894.371 1.403.388-.83-.555-1.375-1.503-1.375-2.58 0-.568.154-1.099.422-1.553 1.527 1.872 3.807 3.104 6.378 3.233-.053-.227-.081-.463-.081-.705 0-1.71 1.385-3.097 3.097-3.097.892 0 1.697.376 2.261.979.705-.139 1.37-.396 1.968-.751-.231.722-.72 1.328-1.359 1.711.627-.074 1.226-.242 1.78-.488-.415.621-.939 1.166-1.55 1.599z"></path></svg>
-</a>
-<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#">
-<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-</a>
-<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#">
-<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-</a>
+<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.623 0-3.131-.469-4.398-1.275 1.636.191 3.261-.272 4.629-1.314-1.354-.027-2.497-.914-2.891-2.138.189.03.381.047.577.047.319 0 .627-.044.917-.124-1.415-.283-2.482-1.531-2.482-3.031v-.038c.416.232.894.371 1.403.388-.83-.555-1.375-1.503-1.375-2.58 0-.568.154-1.099.422-1.553 1.527 1.872 3.807 3.104 6.378 3.233-.053-.227-.081-.463-.081-.705 0-1.71 1.385-3.097 3.097-3.097.892 0 1.697.376 2.261.979.705-.139 1.37-.396 1.968-.751-.231.722-.72 1.328-1.359 1.711.627-.074 1.226-.242 1.78-.488-.415.621-.939 1.166-1.55 1.599z"></path></svg></a>
+<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a>
+<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
 </div>
 </div>
 </footer>
 <!-- END: Footer -->
-<script data-purpose="navigation-logic">
-    // Simple sticky nav highlight and size transition
+<!-- Project Modals (same structure, theme-aware) -->
+<div class="hidden">
+  <div id="project-modal-1" class="white-popup mfp-hide"><div class="flex flex-col md:flex-row"><div class="md:w-3/5 modal-image-container"><img src="assets/projects/project1.png" alt="Synthetics & Forex Calculator"></div><div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50"><div class="mb-4"><span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">Financial Tech • React</span></div><h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">Synthetics & Forex <span class="text-primary">Calculator</span></h3><p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">A precision trading calculator app for Synthetics & Forex traders. Features real-time price access, advanced stop loss/take profit, and custom asset settings.</p><div class="flex flex-col gap-4"><a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator" target="_blank">View on Playstore <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg></a></div></div></div></div>
+  <div id="project-modal-2" class="white-popup mfp-hide"><div class="flex flex-col md:flex-row"><div class="md:w-3/5 modal-image-container"><img src="assets/projects/project2a.png" alt="Assistive Graph-Based Navigation"></div><div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50"><div class="mb-4"><span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">Java • Python • ML</span></div><h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">Assistive <span class="text-primary">Navigation</span></h3><p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">Computer vision system for the visually impaired, analyzing ground images with graph-based methods.</p><div class="flex flex-col gap-4"><a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="#">About This Project <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg></a></div></div></div></div>
+  <div id="project-modal-3" class="white-popup mfp-hide"><div class="flex flex-col md:flex-row"><div class="md:w-3/5 modal-image-container"><img src="assets/projects/project_client_1_dpm.png" alt="DPM Academy Management System"></div><div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50"><div class="mb-4"><span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">Django • Next.js • Enterprise</span></div><h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">DPM Academy <span class="text-primary">System</span></h3><p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">A bespoke enterprise-grade digital ecosystem automating student recruitment and billing.</p><div class="flex flex-col gap-4"><a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="https://www.dpmacademy.co.za" target="_blank">Visit Live Site <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg></a></div></div></div></div>
+</div>
+<script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script>
+    // Theme Toggle Logic
+    (function() {
+      const htmlElement = document.documentElement;
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      
+      // Check for saved theme preference or default to dark
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        htmlElement.classList.remove('dark');
+        htmlElement.classList.add('light');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        htmlElement.classList.add('dark');
+        htmlElement.classList.remove('light');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+      
+      const toggleButton = document.getElementById('theme-toggle');
+      toggleButton.addEventListener('click', () => {
+        if (htmlElement.classList.contains('dark')) {
+          htmlElement.classList.remove('dark');
+          htmlElement.classList.add('light');
+          localStorage.setItem('theme', 'light');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+        } else {
+          htmlElement.classList.remove('light');
+          htmlElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+        }
+      });
+    })();
+    
+    // Sticky nav highlight
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('main-nav');
       if (window.scrollY > 50) {
@@ -409,146 +642,39 @@
         nav.classList.remove('py-2');
       }
     });
-
+    
     // Typewriter Effect
     const typewriterElement = document.getElementById('typewriter-text');
     const textToType = "Software Developer";
     let charIndex = 0;
-
+    
     function typeWriter() {
       if (charIndex < textToType.length) {
         typewriterElement.textContent += textToType.charAt(charIndex);
         charIndex++;
         setTimeout(typeWriter, 100);
       } else {
-        // Wait and then clear for next cycle
         setTimeout(() => {
           typewriterElement.textContent = "";
           charIndex = 0;
-        }, 7000); // Keep text visible for 7 seconds before clearing to prepare for the 10s repeat
+        }, 7000);
       }
     }
-
-    // Start initial typing
     typeWriter();
-
-    // Repeat every 10 seconds
     setInterval(() => {
-      if (typewriterElement.textContent === "") {
-        typeWriter();
-      }
+      if (typewriterElement.textContent === "") typeWriter();
     }, 10000);
-  </script>
-  <!-- Project Modals -->
-  <div class="hidden">
-    <!-- Modal 1 -->
-    <div id="project-modal-1" class="white-popup mfp-hide">
-      <div class="flex flex-col md:flex-row">
-        <div class="md:w-3/5 modal-image-container">
-          <img src="assets/projects/project1.png" alt="Synthetics & Forex Calculator">
-        </div>
-        <div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50">
-          <div class="mb-4">
-            <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
-              Financial Tech • React
-            </span>
-          </div>
-          <h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">
-            Synthetics & Forex <span class="text-primary">Calculator</span>
-          </h3>
-          <p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">
-            A precision trading calculator app for Synthetics & Forex traders. Features real-time price access, advanced stop loss/take profit, and custom asset settings for informed trading decisions.
-          </p>
-          <div class="flex flex-col gap-4">
-            <a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator" target="_blank">
-              View on Playstore
-              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
-            </a>
-            <a class="w-full text-center px-8 py-4 border border-white/10 text-slate-300 font-bold rounded-2xl hover:bg-white/5 transition-all" href="#">
-              About This App
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 2 -->
-    <div id="project-modal-2" class="white-popup mfp-hide">
-      <div class="flex flex-col md:flex-row">
-        <div class="md:w-3/5 modal-image-container">
-          <img src="assets/projects/project2a.png" alt="Assistive Graph-Based Navigation">
-        </div>
-        <div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50">
-          <div class="mb-4">
-            <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
-              Java • Python • ML
-            </span>
-          </div>
-          <h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">
-            Assistive <span class="text-primary">Navigation</span>
-          </h3>
-          <p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">
-            Computer vision system for the visually impaired, analyzing ground images with graph-based methods to identify safe paths, obstacles, and stairs.
-          </p>
-          <div class="flex flex-col gap-4">
-            <a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="#" target="_blank">
-              About This Project
-              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal 3 -->
-    <div id="project-modal-3" class="white-popup mfp-hide">
-      <div class="flex flex-col md:flex-row">
-        <div class="md:w-3/5 modal-image-container">
-          <img src="assets/projects/project_client_1_dpm.png" alt="DPM Academy Management System">
-        </div>
-        <div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50">
-          <div class="mb-4">
-            <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
-              Django • Next.js • Enterprise
-            </span>
-          </div>
-          <h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">
-            DPM Academy <span class="text-primary">System</span>
-          </h3>
-          <p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">
-            A bespoke, enterprise-grade digital ecosystem. Automates student recruitment, tutor vetting, and recurring billing for DPM Academy.
-          </p>
-          <div class="flex flex-col gap-4">
-            <a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="https://www.dpmacademy.co.za" target="_blank">
-              Visit Live Site
-              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Magnific Popup JS -->
-  <script src="assets/js/jquery-3.7.1.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script>
+    
+    // Magnific Popup
     $(document).ready(function() {
-      // Image Gallery Popup
-      $('.gallery-thumb').magnificPopup({
-        type: 'image',
-        gallery: {
-          enabled: true
-        }
-      });
-
-      // Project Details Inline Popup
       $('.project-modal-trigger').magnificPopup({
         type: 'inline',
         preloader: false,
-        focus: '#name',
         closeBtnInside: true,
         fixedContentPos: true,
         mainClass: 'mfp-fade'
       });
     });
   </script>
-</body></html>
+</body>
+</html>
