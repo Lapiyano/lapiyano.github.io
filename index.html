@@ -1,423 +1,554 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Lapiyano</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Lapiyano Manganhe</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.jpg" alt="John Doe profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Lapiyano Manganhe</h1>
-        <p class="section__text__p2">Software Developer In Training</p>
-        <div class="btn-container">
-        
-          <button class="btn btn-color-1" onclick="location.href='#contact'">
-            Contact
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/lapiyano-manganhe-615936319/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/Lapiyano'"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/about-pic.jpg"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-        
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Sc. In Electrical & Info Engineering<br />B.Sc. In Computer Science & Informatics</p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              Passionate about technology and innovation, I'm a dedicated computer science student eager 
-              to make an impact in the tech world. Currently honing my skills in software development, 
-              I enjoy exploring new programming languages, building creative projects, and staying 
-              updated with the latest industry trends. Join me on my journey as I develop my expertise 
-              and work towards contributing to groundbreaking technological advancements.
-            </p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>React</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Android UI(XML)</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>VB.NET</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
 
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>ASP.net</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-            </div>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lapiyano.Dev | Software Developer Portfolio</title>
+<meta content="Portfolio of Lapiyano, a Software Developer specializing in Web, App, and ML solutions." name="description"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b4c5ff',
+            dark: '#0a0c12',
+            card: '#161b22',
+          },
+          fontFamily: {
+            sans: ['Hanken Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'scroll': 'scroll 30s linear infinite',
+          },
+          keyframes: {
+            scroll: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <style data-purpose="custom-utilities">    .glass-effect {
+      background: rgba(22, 27, 34, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(180, 197, 255, 0.1);
+    }
+    .hero-bg {
+      background-image: linear-gradient(rgba(10, 12, 18, 0.6), rgba(10, 12, 18, 0.9)), url('assets/hero/hero_backround.png');
+      background-position: center;
+      background-size: cover;
+    }
+    .text-glow {
+      text-shadow: 0 0 10px rgba(180, 197, 255, 0.3);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Modal Styles */
+    .white-popup {
+      position: relative;
+      background: #161b22;
+      padding: 0;
+      width: 95%;
+      max-width: 1100px;
+      margin: 20px auto;
+      border-radius: 2rem;
+      border: 1px solid rgba(180, 197, 255, 0.1);
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+    .modal-image-container {
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      min-height: 400px;
+    }
+    .modal-image-container img {
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .mfp-bg {
+      background: #0a0c12;
+      opacity: 0.95;
+      backdrop-filter: blur(8px);
+    }
+    .mfp-close {
+      color: #b4c5ff !important;
+      top: 15px;
+      right: 15px;
+      font-size: 30px;
+    }
+    @media (max-width: 768px) {
+      .modal-image-container {
+        padding: 1rem;
+        min-height: auto;
+      }
+      #home {
+        margin-bottom: 80px !important;
+      }
+      .tech-stack-section {
+        margin-top: 16px !important;
+      }
+      [data-purpose="hero-text-container"] {
+        margin-bottom: 32px !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-dark text-slate-200 font-sans selection:bg-primary/30 selection:text-white">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 w-full z-50 glass-effect transition-all duration-300" id="main-header">
+<nav class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center transition-all duration-300" id="main-nav">
+<div class="text-xl font-extrabold tracking-tighter" data-purpose="logo">
+        Lapiyano<span class="text-primary">.Dev</span>
+</div>
+<!-- Desktop Navigation -->
+<ul class="hidden md:flex space-x-6 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="#about">About</a></li>
+<li><a class="hover:text-primary transition-colors" href="#projects">Projects</a></li>
+<li><a class="hover:text-primary transition-colors" href="#contact">Contact</a></li>
+</ul>
+<a class="px-4 py-1.5 bg-primary text-dark text-sm font-bold rounded-full hover:bg-white transition-all transform hover:scale-105" href="#contact">
+        Hire Me
+      </a>
+</nav>
+</header>
+<!-- END: MainHeader -->
+<main>
+<!-- BEGIN: HeroSection -->
+<section class="hero-bg min-h-screen flex items-center pt-20 mb-0 md:mb-0" id="home">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+<!-- Hero Content -->
+<div data-purpose="hero-text-container">
+<h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+            Hello<span class="text-primary">,</span><br/>
+            I'm Lapiyano.
+            <span class="block text-primary text-3xl md:text-5xl mt-2 min-h-[1.2em]">
+              <span id="typewriter-text"></span><span class="animate-pulse">|</span>
+            </span>
+</h1>
+<p class="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed">
+            Passionate about technology and innovation, I’m a developer and computer science student focused on building impactful digital solutions. I enjoy creating modern web applications and exploring artificial intelligence.
+          </p>
+<div class="flex flex-wrap gap-4">
+<a class="px-8 py-4 bg-primary text-dark font-bold rounded-lg hover:shadow-[0_0_20px_rgba(180,197,255,0.4)] transition-all" href="#contact">
+              Got a project?
+            </a>
+<a class="px-8 py-4 border border-primary/30 text-primary font-bold rounded-lg hover:bg-primary/10 transition-all" href="#">
+              My resume
+            </a>
+</div>
+</div>
+<!-- Hero Image -->
+<div class="relative flex justify-center items-center" data-purpose="hero-profile-image">
+<div class="relative w-64 h-64 md:w-80 md:h-80">
+<!-- Pulsing Borders (Enhanced) -->
+<div class="absolute inset-0 rounded-full border-4 border-primary/40 animate-pulse-slow"></div>
+<div class="absolute -inset-6 rounded-full border-2 border-primary/20 animate-pulse-slow" style="animation-delay: 1s;"></div>
+<div class="absolute -inset-12 rounded-full border border-primary/10 animate-pulse-slow" style="animation-delay: 2s;"></div>
+<!-- Profile Avatar -->
+<div class="w-full h-full rounded-full overflow-hidden border-4 border-primary/30 bg-card flex items-center justify-center shadow-[0_0_30px_rgba(180,197,255,0.2)]">
+<img alt="Lapiyano Profile" class="w-full h-full object-cover" src="assets/photos/lapiyano1.png"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<style>
+  @media (max-width: 768px) {
+    #home {
+      margin-bottom: 80px !important;
+    }
+  }
+</style>
+<!-- BEGIN: TechStack -->
+<section class="py-2 md:py-4 bg-dark/50 border-y border-white/5 overflow-hidden tech-stack-section">
+<div class="flex whitespace-nowrap animate-scroll">
+<div class="flex space-x-4 px-4 items-center">
+<!-- Tech Plls Set 1 -->
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">JavaScript</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Java</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Node.js</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">React.js</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Django</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">ASP.net</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">MongoDB</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">MySQL</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Git</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Machine Learning</span>
+</div>
+<div class="flex space-x-4 px-4 items-center">
+<!-- Tech Plls Set 2 (Duplicate for loop) -->
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">JavaScript</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Java</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Node.js</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">React.js</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Django</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">ASP.net</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">MongoDB</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">MySQL</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Git</span>
+<span class="px-6 py-2 glass-effect rounded-full font-mono text-primary border border-primary/20">Machine Learning</span>
+</div>
+</div>
+</section>
+<!-- END: TechStack -->
+<!-- BEGIN: AboutSection -->
+<section class="py-24 max-w-7xl mx-auto px-6" id="about">
+<div class="grid lg:grid-cols-12 gap-8">
+<!-- Bio Column -->
+<div class="lg:col-span-5 space-y-6">
+<h2 class="text-4xl font-bold">About <span class="text-primary">Me</span></h2>
+<p class="text-slate-400 text-lg leading-relaxed">
+            Passionate about technology and innovation, I’m a developer and computer science student focused on building impactful digital solutions. I enjoy creating modern web applications, exploring artificial intelligence and machine learning, and continuously expanding my skills across software development. Driven by curiosity and problem-solving, I’m committed to developing innovative technologies that combine creativity, functionality, and real-world value.
+          </p>
+<div class="p-6 bg-card/50 rounded-2xl border border-white/5">
+<h3 class="font-bold text-primary mb-2">My Philosophy</h3>
+<p class="text-sm italic">"Clean code is not just written; it's engineered with purpose and refined with passion."</p>
+</div>
+</div>
+<!-- Bento Grid Services -->
+<div class="lg:col-span-7 grid md:grid-cols-2 gap-4" data-purpose="services-grid">
+<div class="p-8 bg-card rounded-3xl border border-white/5 flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Website Development</h4>
+<p class="text-slate-400 text-sm">Responsive, SEO-optimized, and high-performance web applications using the latest tech stacks.</p>
+</div>
+</div>
+<div class="p-8 bg-card rounded-3xl border border-white/5 flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">App Development</h4>
+<p class="text-slate-400 text-sm">Creating seamless mobile experiences for iOS and Android with cross-platform frameworks.</p>
+</div>
+</div>
+<div class="md:col-span-2 p-8 bg-card rounded-3xl border border-white/5 flex items-center gap-6 hover:border-primary/40 transition-colors">
+<div class="shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-1">ML Solutions</h4>
+<p class="text-slate-400 text-sm">Implementing intelligent features, predictive modeling, and data-driven automation into your existing products.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: ProjectsSection -->
+<section class="py-24 bg-dark/30" id="projects">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-4xl font-bold mb-2">Featured <span class="text-primary">Projects</span></h2>
+<p class="text-slate-400">Experimental, Academic & Personal Ventures.</p>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Project Card 1 -->
+<div class="group relative bg-card rounded-3xl border border-white/5 overflow-hidden hover:border-primary/40 transition-all">
+<div class="aspect-video bg-slate-800 overflow-hidden">
+<img alt="Synthetics & Forex Calculator Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/projects/project1.png"/>
+</div>
+<!-- Maximize Button -->
+<div class="absolute bottom-4 right-4 z-20">
+  <a href="#project-modal-1" class="project-modal-trigger bg-dark/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center" title="Project Details">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+  </a>
+</div>
+<div class="p-8">
+<span class="text-xs font-mono text-primary uppercase tracking-widest">Financial Tech • React</span>
+<h3 class="text-2xl font-bold mt-2 mb-4">Synthetics &amp; Forex Calculator</h3>
+<p class="text-slate-400 mb-6">A precision trading calculator app for Synthetics & Forex traders. Features real-time price access, advanced stop loss/take profit, pip and commission calculators, and custom asset settings for informed trading decisions.</p>
+<div class="flex gap-4">
+<a class="text-primary hover:underline font-bold" href="https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator" target="_blank" rel="noopener">View Playstore →</a>
+<a class="text-primary hover:underline font-bold" href="#">About This App →</a>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="group relative bg-card rounded-3xl border border-white/5 overflow-hidden hover:border-primary/40 transition-all">
+<div class="aspect-video bg-slate-800 overflow-hidden">
+<img alt="Assistive Graph-Based Navigation Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/projects/project2a.png"/>
+</div>
+<!-- Maximize Button -->
+<div class="absolute bottom-4 right-4 z-20">
+  <a href="#project-modal-2" class="project-modal-trigger bg-dark/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center" title="Project Details">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+  </a>
+</div>
+<div class="p-8">
+<span class="text-xs font-mono text-primary uppercase tracking-widest">Java • Python • Machine Learning</span>
+<h3 class="text-2xl font-bold mt-2 mb-4">Assistive Graph-Based Navigation</h3>
+<p class="text-slate-400 mb-6">Computer vision system for the visually impaired, analyzing ground images with graph-based methods to identify safe paths, obstacles, and stairs. Combines Sobel edge detection and spatial graph encoding.</p>
+<div class="flex gap-4">
+<a class="text-primary hover:underline font-bold" href="#">About This Project →</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ProjectsSection -->
+<!-- BEGIN: ClientProjects -->
+<section class="py-24 max-w-7xl mx-auto px-6">
+<h2 class="text-4xl font-bold mb-12 text-center">Client <span class="text-primary">Deliverables</span></h2>
+<div class="max-w-7xl mx-auto">
+  <div class="bg-card p-1 border border-white/10 rounded-[2rem] w-full">
+    <div class="bg-dark p-8 md:p-12 rounded-[1.8rem] flex flex-col md:flex-row gap-12 items-center relative">
+      <div class="w-full md:w-1/3 aspect-square bg-primary/5 rounded-2xl flex items-center justify-center overflow-hidden">
+        <img alt="DPM Academy Management System" class="w-full h-full object-cover" src="assets/projects/project_client_1_dpm.png"/>
+      </div>
+      <div class="flex-1">
+        <h3 class="text-3xl font-bold mb-4">DPM Academy Management System</h3>
+        <p class="text-slate-400 text-lg mb-6 leading-relaxed">
+          A bespoke, enterprise-grade digital ecosystem custom-engineered for DPM Academy. Automates student recruitment, tutor vetting, South African-specific academic scheduling, and recurring billing.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-6">
+          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300">Django</span>
+          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300">Next.js</span>
+          <span class="px-3 py-1 bg-white/5 rounded-md text-xs font-mono text-slate-300">Enterprise</span>
+        </div>
+        <a class="text-primary hover:underline font-bold" href="https://www.dpmacademy.co.za" target="_blank" rel="noopener">Visit DPM Academy →</a>
+      </div>
+      <!-- Maximize Button -->
+      <div class="absolute bottom-6 right-6 z-20">
+        <a href="#project-modal-3" class="project-modal-trigger bg-card/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-primary hover:bg-primary hover:text-dark transition-all inline-flex items-center justify-center" title="Project Details">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- END: ClientProjects -->
+<!-- BEGIN: ContactSection -->
+<section class="py-24 bg-dark relative overflow-hidden" id="contact">
+<!-- Decorative element -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+<div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
+<h2 class="text-4xl font-bold mb-4">Let's <span class="text-primary">Collaborate</span></h2>
+<p class="text-slate-400 mb-12">Have a vision? Let’s bring it to life together.</p>
+<form class="space-y-6 text-left" data-purpose="contact-form">
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-400" for="name">Your Name</label>
+<input class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4" id="name" name="name" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-400" for="email">Email Address</label>
+<input class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4" id="email" name="email" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-400" for="message">Message</label>
+<textarea class="w-full bg-card border-white/10 rounded-xl focus:border-primary focus:ring-primary text-white p-4" id="message" name="message" placeholder="Tell me about your project..." rows="5"></textarea>
+</div>
+<button class="w-full py-4 bg-primary text-dark font-bold rounded-xl hover:bg-white transition-all transform active:scale-95 shadow-xl shadow-primary/10" type="submit">
+            Send Message
+          </button>
+</form>
+</div>
+</section>
+<!-- END: ContactSection -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="py-12 border-t border-white/5 bg-dark">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-slate-500 text-sm">
+        © 2026 <span class="font-bold text-slate-300">Lapiyano Manganhe</span>. All rights reserved.
+      </div>
+<div class="flex space-x-6">
+<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.623 0-3.131-.469-4.398-1.275 1.636.191 3.261-.272 4.629-1.314-1.354-.027-2.497-.914-2.891-2.138.189.03.381.047.577.047.319 0 .627-.044.917-.124-1.415-.283-2.482-1.531-2.482-3.031v-.038c.416.232.894.371 1.403.388-.83-.555-1.375-1.503-1.375-2.58 0-.568.154-1.099.422-1.553 1.527 1.872 3.807 3.104 6.378 3.233-.053-.227-.081-.463-.081-.705 0-1.71 1.385-3.097 3.097-3.097.892 0 1.697.376 2.261.979.705-.139 1.37-.396 1.968-.751-.231.722-.72 1.328-1.359 1.711.627-.074 1.226-.242 1.78-.488-.415.621-.939 1.166-1.55 1.599z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" data-purpose="social-icon" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<script data-purpose="navigation-logic">
+    // Simple sticky nav highlight and size transition
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('main-nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('py-2');
+        nav.classList.remove('py-3');
+      } else {
+        nav.classList.add('py-3');
+        nav.classList.remove('py-2');
+      }
+    });
+
+    // Typewriter Effect
+    const typewriterElement = document.getElementById('typewriter-text');
+    const textToType = "Software Developer";
+    let charIndex = 0;
+
+    function typeWriter() {
+      if (charIndex < textToType.length) {
+        typewriterElement.textContent += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 100);
+      } else {
+        // Wait and then clear for next cycle
+        setTimeout(() => {
+          typewriterElement.textContent = "";
+          charIndex = 0;
+        }, 7000); // Keep text visible for 7 seconds before clearing to prepare for the 10s repeat
+      }
+    }
+
+    // Start initial typing
+    typeWriter();
+
+    // Repeat every 10 seconds
+    setInterval(() => {
+      if (typewriterElement.textContent === "") {
+        typeWriter();
+      }
+    }, 10000);
+  </script>
+  <!-- Project Modals -->
+  <div class="hidden">
+    <!-- Modal 1 -->
+    <div id="project-modal-1" class="white-popup mfp-hide">
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-3/5 modal-image-container">
+          <img src="assets/projects/project1.png" alt="Synthetics & Forex Calculator">
+        </div>
+        <div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50">
+          <div class="mb-4">
+            <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
+              Financial Tech • React
+            </span>
           </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Backend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>PostgreSQL</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Node JS</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Express JS</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Django</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Java</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>C++</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>C#</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-             
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Visual Basic</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Python</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MQL5</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-            </div>
+          <h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">
+            Synthetics & Forex <span class="text-primary">Calculator</span>
+          </h3>
+          <p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">
+            A precision trading calculator app for Synthetics & Forex traders. Features real-time price access, advanced stop loss/take profit, and custom asset settings for informed trading decisions.
+          </p>
+          <div class="flex flex-col gap-4">
+            <a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator" target="_blank">
+              View on Playstore
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+            </a>
+            <a class="w-full text-center px-8 py-4 border border-white/10 text-slate-300 font-bold rounded-2xl hover:bg-white/5 transition-all" href="#">
+              About This App
+            </a>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#projects'"
-      />
-    </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.png"
-                alt="Project 1"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project 1</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator'"
-              >
-                Playstore
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://www.youtube.com/watch?v=hoiSEEnkQ2I'"
-              >
-                Youtube
-              </button>
-            </div>
+    </div>
+    <!-- Modal 2 -->
+    <div id="project-modal-2" class="white-popup mfp-hide">
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-3/5 modal-image-container">
+          <img src="assets/projects/project2a.png" alt="Assistive Graph-Based Navigation">
+        </div>
+        <div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50">
+          <div class="mb-4">
+            <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
+              Java • Python • ML
+            </span>
           </div>
-          <!-- <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/brochure.png"
-                alt="Project 1"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project 2</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='TertiaryGuide.html'"
-              >
-                Link
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='aboutTertiaryGuide.html'"
-              >
-                About
-              </button>
-            </div>
-          </div> -->
+          <h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">
+            Assistive <span class="text-primary">Navigation</span>
+          </h3>
+          <p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">
+            Computer vision system for the visually impaired, analyzing ground images with graph-based methods to identify safe paths, obstacles, and stairs.
+          </p>
+          <div class="flex flex-col gap-4">
+            <a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="#" target="_blank">
+              About This Project
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+            </a>
+          </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#contact'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:lapiyanomanganhe@gmail.com">lapiyanomanganhe@gmail.com</a></p>
+    </div>
+    <!-- Modal 3 -->
+    <div id="project-modal-3" class="white-popup mfp-hide">
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-3/5 modal-image-container">
+          <img src="assets/projects/project_client_1_dpm.png" alt="DPM Academy Management System">
         </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/lapiyano-manganhe-615936319/">LinkedIn</a></p>
+        <div class="md:w-2/5 p-10 md:p-16 border-l border-white/5 flex flex-col justify-center bg-card/50">
+          <div class="mb-4">
+            <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
+              Django • Next.js • Enterprise
+            </span>
+          </div>
+          <h3 class="text-4xl md:text-5xl font-extrabold mb-8 text-white tracking-tight leading-[1.1]">
+            DPM Academy <span class="text-primary">System</span>
+          </h3>
+          <p class="text-slate-400 mb-10 text-xl leading-relaxed font-light">
+            A bespoke, enterprise-grade digital ecosystem. Automates student recruitment, tutor vetting, and recurring billing for DPM Academy.
+          </p>
+          <div class="flex flex-col gap-4">
+            <a class="group w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-2xl hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/10" href="https://www.dpmacademy.co.za" target="_blank">
+              Visit Live Site
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+            </a>
+          </div>
         </div>
       </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      
-    </footer>
-    <script src="script.js"></script>
-  </body>
-</html>
+    </div>
+  </div>
+
+  <!-- Magnific Popup JS -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Image Gallery Popup
+      $('.gallery-thumb').magnificPopup({
+        type: 'image',
+        gallery: {
+          enabled: true
+        }
+      });
+
+      // Project Details Inline Popup
+      $('.project-modal-trigger').magnificPopup({
+        type: 'inline',
+        preloader: false,
+        focus: '#name',
+        closeBtnInside: true,
+        fixedContentPos: true,
+        mainClass: 'mfp-fade'
+      });
+    });
+  </script>
+</body></html>
