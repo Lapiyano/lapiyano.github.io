@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About — Assistive Graph-Based Navigation | Lapiyano.Dev</title>
+<meta content="An in-depth look at the Assistive Graph-Based Navigation project by Lapiyano — a computer vision system that helps visually impaired people read tactile paving and navigate safely." name="description"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b4c5ff',
+            dark: '#0a0c12',
+            card: '#161b22',
+            lightBg: '#f8fafc',
+            lightCard: '#ffffff',
+            lightText: '#1e293b',
+            lightTextSecondary: '#475569',
+          },
+          fontFamily: {
+            sans: ['Hanken Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles -->
+<style data-purpose="custom-utilities">
+    * {
+      transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+      transition-duration: 200ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dark .glass-effect {
+      background: rgba(22, 27, 34, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(180, 197, 255, 0.1);
+    }
+    .light .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .text-glow { text-shadow: 0 0 10px rgba(180, 197, 255, 0.3); }
+    .light .text-glow { text-shadow: 0 0 8px rgba(59, 130, 246, 0.2); }
+
+    /* Light mode adaptive utilities (mirrors index.html) */
+    .light .bg-card { background-color: #ffffff; border-color: #e2e8f0; }
+    .light .bg-card\/50 { background-color: rgba(255, 255, 255, 0.5); }
+    .light .bg-dark { background-color: #f8fafc; }
+    .light .bg-dark\/30 { background-color: rgba(241, 245, 249, 0.5); }
+    .light .bg-dark\/50 { background-color: rgba(241, 245, 249, 0.5); }
+    .light .border-white\/5 { border-color: #e2e8f0; }
+    .light .border-white\/10 { border-color: #cbd5e1; }
+    .light .border-white\/20 { border-color: #cbd5e1; }
+    .light .text-slate-400 { color: #475569; }
+    .light .text-slate-500 { color: #64748b; }
+    .light .text-slate-300 { color: #334155; }
+    .light .text-slate-200 { color: #1e293b; }
+    .light .bg-primary\/10 { background-color: rgba(59, 130, 246, 0.1); }
+    .light .bg-primary\/5 { background-color: rgba(59, 130, 246, 0.05); }
+    .light .bg-white\/5 { background-color: rgba(0, 0, 0, 0.05); }
+    .light .shadow-primary\/10 { --tw-shadow-color: rgba(59, 130, 246, 0.2); }
+    .light .text-primary { color: #3b82f6; }
+    .light .border-primary\/30 { border-color: rgba(59, 130, 246, 0.3); }
+    .light .border-primary\/20 { border-color: rgba(59, 130, 246, 0.2); }
+    .light .border-primary\/40 { border-color: rgba(59, 130, 246, 0.4); }
+    .light .bg-primary { background-color: #3b82f6; color: white; }
+    .light .bg-primary:hover { background-color: #2563eb; }
+    .light .hover\:bg-primary\/10:hover { background-color: rgba(59, 130, 246, 0.1); }
+    .light .hover\:border-primary\/40:hover { border-color: rgba(59, 130, 246, 0.5); }
+    .light .hover\:text-primary:hover { color: #3b82f6; }
+    .theme-toggle { cursor: pointer; transition: all 0.3s ease; }
+    .theme-toggle:hover { transform: scale(1.05); }
+
+    /* 16:9 responsive video frame */
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(180, 197, 255, 0.15);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    }
+    .light .video-frame { border-color: rgba(59, 130, 246, 0.2); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+    .video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  </style>
+</head>
+<body class="bg-dark text-slate-200 font-sans selection:bg-primary/30 selection:text-white">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 w-full z-50 glass-effect transition-all duration-300" id="main-header">
+<nav class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center transition-all duration-300" id="main-nav">
+<a href="index.html" class="text-xl font-extrabold tracking-tighter" data-purpose="logo">
+        Lapiyano<span class="text-primary">.Dev</span>
+</a>
+<ul class="hidden md:flex space-x-6 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="index.html#about">About</a></li>
+<li><a class="hover:text-primary transition-colors" href="index.html#projects">Projects</a></li>
+<li><a class="hover:text-primary transition-colors" href="index.html#contact">Contact</a></li>
+</ul>
+<div class="flex items-center gap-4">
+<button id="theme-toggle" class="theme-toggle p-2 rounded-full glass-effect border border-primary/20 text-primary hover:scale-105 transition-all" aria-label="Toggle theme">
+  <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+  </svg>
+  <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+  </svg>
+</button>
+<a class="px-4 py-1.5 bg-primary text-dark text-sm font-bold rounded-full hover:bg-white transition-all transform hover:scale-105" href="index.html#contact">
+        Hire Me
+      </a>
+</div>
+</nav>
+</header>
+<!-- END: MainHeader -->
+<main class="pt-28">
+<!-- BEGIN: Breadcrumb -->
+<div class="max-w-5xl mx-auto px-6 pt-6">
+<a href="index.html#projects" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-primary transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        Back to Projects
+</a>
+</div>
+<!-- END: Breadcrumb -->
+<!-- BEGIN: Hero -->
+<section class="max-w-5xl mx-auto px-6 pt-8 pb-12">
+<span class="text-xs font-mono text-primary uppercase tracking-widest">Java • Python • Machine Learning • Accessibility</span>
+<h1 class="text-4xl md:text-6xl font-extrabold mt-3 mb-6 leading-tight">
+        Assistive Graph-Based <span class="text-primary text-glow">Navigation</span>
+</h1>
+<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-3xl">
+        A computer vision system that helps visually impaired people move through public spaces more safely. By reading the textured paving laid down specifically to guide them — and spotting nearby obstacles and stairs — the system turns the ground itself into a source of reliable navigation cues.
+</p>
+<div class="flex flex-wrap gap-4 mt-8">
+<a class="group inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-dark font-bold rounded-xl hover:bg-white transition-all transform hover:-translate-y-0.5 shadow-lg shadow-primary/10" href="#demo">
+        Watch the demo
+<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+<a class="inline-flex items-center gap-2 px-7 py-3.5 border border-primary/30 text-primary font-bold rounded-xl hover:bg-primary/10 transition-all" href="https://youtu.be/dMtqbKz7Xk8" target="_blank" rel="noopener">
+        Open on YouTube
+</a>
+</div>
+</section>
+<!-- END: Hero -->
+<!-- BEGIN: Demo Video -->
+<section class="max-w-5xl mx-auto px-6 pb-16" id="demo">
+<div class="video-frame">
+<iframe src="https://www.youtube.com/embed/dMtqbKz7Xk8" title="Assistive Graph-Based Navigation — Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<p class="text-center text-slate-500 text-sm mt-4">A walkthrough of the system detecting tactile paving and hazards.</p>
+</section>
+<!-- END: Demo Video -->
+<!-- BEGIN: Overview -->
+<section class="max-w-5xl mx-auto px-6 pb-16">
+<div class="grid lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-5">
+<h2 class="text-3xl font-bold">The <span class="text-primary">Mission</span></h2>
+<p class="text-slate-400 text-lg leading-relaxed">
+        In cities around the world, the ground is fitted with <strong class="text-slate-200">tactile paving</strong> — those raised bumps and bars you feel underfoot at crossings, train platforms, and along walkways. They exist to guide people who are blind or have low vision. But these surfaces can be worn down, obscured, or simply hard to interpret, and they say nothing about obstacles standing in the way.
+</p>
+<p class="text-slate-400 text-lg leading-relaxed">
+        This project set out to give visually impaired pedestrians a second pair of eyes. It looks at images of the ground ahead, recognises the type of tactile paving present, and flags hazards such as obstacles and stairs — so the person can be guided toward safe paths and warned away from danger, with confidence.
+</p>
+</div>
+<div class="bg-card rounded-3xl border border-white/5 p-8 flex flex-col gap-6">
+<div>
+<p class="text-2xl font-extrabold text-primary">Accessibility</p>
+<p class="text-slate-400 text-sm">Built to support independent, safer mobility</p>
+</div>
+<div>
+<p class="text-2xl font-extrabold text-primary">Hybrid build</p>
+<p class="text-slate-400 text-sm">Java desktop interface + Python AI engine</p>
+</div>
+<div>
+<p class="text-2xl font-extrabold text-primary">Academic</p>
+<p class="text-slate-400 text-sm">Developed as a university research project</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Overview -->
+<!-- BEGIN: How it works -->
+<section class="bg-dark/30 border-y border-white/5 py-16">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-3">How It <span class="text-primary">Works</span></h2>
+<p class="text-slate-400 mb-10 max-w-2xl">A simple three-step idea, explained without the jargon.</p>
+<div class="grid md:grid-cols-3 gap-5">
+<!-- Step 1 -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="text-primary font-mono text-sm mb-3">01</div>
+<h3 class="text-xl font-bold mb-2">See the ground</h3>
+<p class="text-slate-400 text-sm leading-relaxed">The system takes an image of the path ahead and cleans it up, sharpening the edges and shapes so the important patterns in the paving stand out clearly.</p>
+</div>
+<!-- Step 2 -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="text-primary font-mono text-sm mb-3">02</div>
+<h3 class="text-xl font-bold mb-2">Map the layout</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Rather than judging the image pixel-by-pixel, the system maps how the different parts of the scene relate to one another in space — a richer, more human way of "reading" a layout.</p>
+</div>
+<!-- Step 3 -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="text-primary font-mono text-sm mb-3">03</div>
+<h3 class="text-xl font-bold mb-2">Decide &amp; guide</h3>
+<p class="text-slate-400 text-sm leading-relaxed">A trained AI model then identifies the type of paving and highlights safe paths, obstacles, and stairs — the information needed to guide the user.</p>
+</div>
+</div>
+<div class="mt-8 p-6 bg-primary/5 border border-primary/20 rounded-2xl">
+<p class="text-slate-400 text-sm leading-relaxed"><span class="text-primary font-bold">In plain terms:</span> the project combines a technique that traces the outlines of what the camera sees with a "graph" approach that understands how things are arranged relative to each other. Together they let the AI recognise guidance patterns on the ground far more reliably than looking at the picture alone.</p>
+</div>
+</div>
+</section>
+<!-- END: How it works -->
+<!-- BEGIN: Features -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+<h2 class="text-3xl font-bold mb-3">What It <span class="text-primary">Detects</span></h2>
+<p class="text-slate-400 mb-10 max-w-2xl">The core capabilities that make the system useful in the real world.</p>
+<div class="grid md:grid-cols-2 gap-5">
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Safe paths</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Recognises the guidance paving that marks where it is safe to walk, helping keep the user on a known, intended route.</p>
+</div>
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M5.07 19H19a2 2 0 001.75-2.96l-6.92-12a2 2 0 00-3.5 0l-6.92 12A2 2 0 005.07 19z"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Obstacles</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Spots objects in the way so the user can be warned before reaching them, reducing the risk of collisions and trips.</p>
+</div>
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h4v-4h4v-4h4V6h4"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Stairs &amp; level changes</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Identifies steps and stairs — among the most dangerous features for someone who cannot see them — so they can be approached with caution.</p>
+</div>
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Easy-to-use interface</h3>
+<p class="text-slate-400 text-sm leading-relaxed">A clean desktop application ties everything together, making it straightforward to run the system and view its results.</p>
+</div>
+</div>
+</section>
+<!-- END: Features -->
+<!-- BEGIN: Gallery -->
+<section class="max-w-5xl mx-auto px-6 pb-16">
+<h2 class="text-3xl font-bold mb-3">Project <span class="text-primary">Gallery</span></h2>
+<p class="text-slate-400 mb-10 max-w-2xl">Screens and results from the system. <span class="italic">(Replace the placeholders with your own images.)</span></p>
+<div class="grid md:grid-cols-2 gap-5">
+<div class="aspect-video bg-card rounded-3xl border border-white/5 overflow-hidden">
+<img alt="Assistive Navigation interface" class="w-full h-full object-cover" src="assets/projects/project2a.png"/>
+</div>
+<div class="aspect-video bg-card rounded-3xl border border-white/5 overflow-hidden">
+<img alt="Assistive Navigation detection result" class="w-full h-full object-cover" src="assets/projects/project2b.png"/>
+</div>
+<div class="md:col-span-2 aspect-video bg-card rounded-3xl border border-white/5 overflow-hidden">
+<!-- TODO: swap for a wide hero/mockup or another result image -->
+<img alt="Assistive Navigation desktop mockup" class="w-full h-full object-cover" src="assets/projects/project2pc_mockup.png"/>
+</div>
+</div>
+</section>
+<!-- END: Gallery -->
+<!-- BEGIN: CTA -->
+<section class="max-w-5xl mx-auto px-6 pb-24">
+<div class="bg-card rounded-[2rem] border border-white/5 p-10 md:p-14 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+<h2 class="text-3xl md:text-4xl font-bold mb-4 relative z-10">Technology with <span class="text-primary">purpose</span></h2>
+<p class="text-slate-400 mb-8 max-w-xl mx-auto relative z-10">This project is a demonstration of how computer vision and machine learning can be applied to real human problems — making everyday environments more accessible and safer for everyone.</p>
+<a class="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-xl hover:bg-white transition-all transform hover:-translate-y-0.5 shadow-lg shadow-primary/10 relative z-10" href="https://youtu.be/dMtqbKz7Xk8" target="_blank" rel="noopener">
+        Watch the full demo
+<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+</div>
+</section>
+<!-- END: CTA -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="py-12 border-t border-white/5 bg-dark">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-slate-500 text-sm">
+        © 2026 <span class="font-bold text-slate-300">Lapiyano Manganhe</span>. All rights reserved.
+      </div>
+<a href="index.html#projects" class="text-primary hover:underline font-bold text-sm">← Back to all projects</a>
+</div>
+</footer>
+<!-- END: Footer -->
+<script>
+    // Theme Toggle Logic (shared with index.html via localStorage)
+    (function() {
+      const htmlElement = document.documentElement;
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        htmlElement.classList.remove('dark');
+        htmlElement.classList.add('light');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        htmlElement.classList.add('dark');
+        htmlElement.classList.remove('light');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        if (htmlElement.classList.contains('dark')) {
+          htmlElement.classList.remove('dark');
+          htmlElement.classList.add('light');
+          localStorage.setItem('theme', 'light');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+        } else {
+          htmlElement.classList.remove('light');
+          htmlElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Python dependencies for MiniProject3
+# Run: pip install -r requirements.txt
+
+torch>=1.13.0
+torch-geometric
+numpy
+

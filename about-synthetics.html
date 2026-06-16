@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About — Synthetics &amp; Forex Calculator | Lapiyano.Dev</title>
+<meta content="An in-depth look at the Synthetics &amp; Forex Calculator app by Lapiyano — a precision trading calculator for Synthetics and Forex traders." name="description"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b4c5ff',
+            dark: '#0a0c12',
+            card: '#161b22',
+            lightBg: '#f8fafc',
+            lightCard: '#ffffff',
+            lightText: '#1e293b',
+            lightTextSecondary: '#475569',
+          },
+          fontFamily: {
+            sans: ['Hanken Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles -->
+<style data-purpose="custom-utilities">
+    * {
+      transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+      transition-duration: 200ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dark .glass-effect {
+      background: rgba(22, 27, 34, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(180, 197, 255, 0.1);
+    }
+    .light .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .text-glow { text-shadow: 0 0 10px rgba(180, 197, 255, 0.3); }
+    .light .text-glow { text-shadow: 0 0 8px rgba(59, 130, 246, 0.2); }
+
+    /* Light mode adaptive utilities (mirrors index.html) */
+    .light .bg-card { background-color: #ffffff; border-color: #e2e8f0; }
+    .light .bg-card\/50 { background-color: rgba(255, 255, 255, 0.5); }
+    .light .bg-dark { background-color: #f8fafc; }
+    .light .bg-dark\/30 { background-color: rgba(241, 245, 249, 0.5); }
+    .light .bg-dark\/50 { background-color: rgba(241, 245, 249, 0.5); }
+    .light .border-white\/5 { border-color: #e2e8f0; }
+    .light .border-white\/10 { border-color: #cbd5e1; }
+    .light .border-white\/20 { border-color: #cbd5e1; }
+    .light .text-slate-400 { color: #475569; }
+    .light .text-slate-500 { color: #64748b; }
+    .light .text-slate-300 { color: #334155; }
+    .light .text-slate-200 { color: #1e293b; }
+    .light .bg-primary\/10 { background-color: rgba(59, 130, 246, 0.1); }
+    .light .bg-primary\/5 { background-color: rgba(59, 130, 246, 0.05); }
+    .light .bg-white\/5 { background-color: rgba(0, 0, 0, 0.05); }
+    .light .shadow-primary\/10 { --tw-shadow-color: rgba(59, 130, 246, 0.2); }
+    .light .text-primary { color: #3b82f6; }
+    .light .border-primary\/30 { border-color: rgba(59, 130, 246, 0.3); }
+    .light .border-primary\/20 { border-color: rgba(59, 130, 246, 0.2); }
+    .light .border-primary\/40 { border-color: rgba(59, 130, 246, 0.4); }
+    .light .bg-primary { background-color: #3b82f6; color: white; }
+    .light .bg-primary:hover { background-color: #2563eb; }
+    .light .hover\:bg-primary\/10:hover { background-color: rgba(59, 130, 246, 0.1); }
+    .light .hover\:border-primary\/40:hover { border-color: rgba(59, 130, 246, 0.5); }
+    .light .hover\:text-primary:hover { color: #3b82f6; }
+    .theme-toggle { cursor: pointer; transition: all 0.3s ease; }
+    .theme-toggle:hover { transform: scale(1.05); }
+
+    /* 16:9 responsive video frame */
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(180, 197, 255, 0.15);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    }
+    .light .video-frame { border-color: rgba(59, 130, 246, 0.2); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+    .video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  </style>
+</head>
+<body class="bg-dark text-slate-200 font-sans selection:bg-primary/30 selection:text-white">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 w-full z-50 glass-effect transition-all duration-300" id="main-header">
+<nav class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center transition-all duration-300" id="main-nav">
+<a href="index.html" class="text-xl font-extrabold tracking-tighter" data-purpose="logo">
+        Lapiyano<span class="text-primary">.Dev</span>
+</a>
+<ul class="hidden md:flex space-x-6 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="index.html#about">About</a></li>
+<li><a class="hover:text-primary transition-colors" href="index.html#projects">Projects</a></li>
+<li><a class="hover:text-primary transition-colors" href="index.html#contact">Contact</a></li>
+</ul>
+<div class="flex items-center gap-4">
+<button id="theme-toggle" class="theme-toggle p-2 rounded-full glass-effect border border-primary/20 text-primary hover:scale-105 transition-all" aria-label="Toggle theme">
+  <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+  </svg>
+  <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+  </svg>
+</button>
+<a class="px-4 py-1.5 bg-primary text-dark text-sm font-bold rounded-full hover:bg-white transition-all transform hover:scale-105" href="index.html#contact">
+        Hire Me
+      </a>
+</div>
+</nav>
+</header>
+<!-- END: MainHeader -->
+<main class="pt-28">
+<!-- BEGIN: Breadcrumb -->
+<div class="max-w-5xl mx-auto px-6 pt-6">
+<a href="index.html#projects" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-primary transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        Back to Projects
+</a>
+</div>
+<!-- END: Breadcrumb -->
+<!-- BEGIN: Hero -->
+<section class="max-w-5xl mx-auto px-6 pt-8 pb-12">
+<span class="text-xs font-mono text-primary uppercase tracking-widest">Financial Tech • React • Mobile App</span>
+<h1 class="text-4xl md:text-6xl font-extrabold mt-3 mb-6 leading-tight">
+        Synthetics &amp; Forex <span class="text-primary text-glow">Calculator</span>
+</h1>
+<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-3xl">
+        A precision trading companion built for Synthetics and Forex traders who refuse to leave their numbers to chance. It turns the tedious, error-prone math behind every trade into instant, reliable answers — so traders can focus on strategy, not arithmetic.
+</p>
+<div class="flex flex-wrap gap-4 mt-8">
+<a class="group inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-dark font-bold rounded-xl hover:bg-white transition-all transform hover:-translate-y-0.5 shadow-lg shadow-primary/10" href="https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator" target="_blank" rel="noopener">
+        Get it on Google Play
+<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+<a class="inline-flex items-center gap-2 px-7 py-3.5 border border-primary/30 text-primary font-bold rounded-xl hover:bg-primary/10 transition-all" href="#demo">
+        Watch the demo
+</a>
+</div>
+</section>
+<!-- END: Hero -->
+<!-- BEGIN: Demo Video -->
+<section class="max-w-5xl mx-auto px-6 pb-16" id="demo">
+<div class="video-frame">
+<iframe src="https://www.youtube.com/embed/hoiSEEnkQ2I" title="Synthetics & Forex Calculator — Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<p class="text-center text-slate-500 text-sm mt-4">A short walkthrough of the app in action.</p>
+</section>
+<!-- END: Demo Video -->
+<!-- BEGIN: Overview -->
+<section class="max-w-5xl mx-auto px-6 pb-16">
+<div class="grid lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-5">
+<h2 class="text-3xl font-bold">The <span class="text-primary">Problem</span></h2>
+<p class="text-slate-400 text-lg leading-relaxed">
+        Trading the financial markets involves constant calculation. Before placing a single order, a trader needs to know exactly how much they stand to risk, how much they could gain, where to set their stop loss and take profit, and what their position size should be. Getting any of these wrong — even by a small margin — can be the difference between a disciplined trade and a costly mistake.
+</p>
+<p class="text-slate-400 text-lg leading-relaxed">
+        Most traders juggle several disconnected tools, spreadsheets, and mental math to work this out. The Synthetics &amp; Forex Calculator brings all of it into one clean, purpose-built mobile app — accurate, fast, and tailored to the way real traders work.
+</p>
+</div>
+<div class="bg-card rounded-3xl border border-white/5 p-8 flex flex-col gap-6">
+<div>
+<p class="text-3xl font-extrabold text-primary">7+</p>
+<p class="text-slate-400 text-sm">Calculation tools in one app</p>
+</div>
+<div>
+<p class="text-3xl font-extrabold text-primary">Live</p>
+<p class="text-slate-400 text-sm">Real-time prices for popular symbols</p>
+</div>
+<div>
+<p class="text-3xl font-extrabold text-primary">Android</p>
+<p class="text-slate-400 text-sm">Available on the Google Play Store</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Overview -->
+<!-- BEGIN: Features -->
+<section class="bg-dark/30 border-y border-white/5 py-16">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-3">Key <span class="text-primary">Features</span></h2>
+<p class="text-slate-400 mb-10 max-w-2xl">Everything a trader needs to size a position and manage risk — without leaving the app.</p>
+<div class="grid md:grid-cols-2 gap-5">
+<!-- Feature -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Real-Time Prices</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Access up-to-date prices for popular symbols, including metals like Gold and indices like US30, so calculations always reflect current market conditions.</p>
+</div>
+<!-- Feature -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Stop Loss &amp; Take Profit</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Six different calculation modes help traders set protective stops and profit targets that match their exact strategy and risk appetite.</p>
+</div>
+<!-- Feature -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Pip Calculator</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Input point values from both mobile and desktop platforms for accurate risk and profit calculations down to the pip.</p>
+</div>
+<!-- Feature -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18M7 14l3-3 4 4 5-6"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Pivot Point Calculators</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Includes Floor, Woodie, Camarilla, Demark, and Fibonacci methods, giving traders the flexibility to follow varied strategies.</p>
+</div>
+<!-- Feature -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-8a2 2 0 00-2-2H9a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Commission Calculator</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Tailored for traders using zero-spread accounts, ensuring trading costs are factored in for truly accurate profit and loss figures.</p>
+</div>
+<!-- Feature -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Custom Asset Settings</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Enter specifications such as swap rates, spread, leverage, and contract sizes for fully personalised calculations on any instrument.</p>
+</div>
+<!-- Feature -->
+<div class="p-7 bg-card rounded-3xl border border-white/5 hover:border-primary/40 transition-colors md:col-span-2">
+<div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+</div>
+<h3 class="text-xl font-bold mb-2">Leverage Calculator</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Provides accurate margin cost estimations, helping traders understand exactly how much capital a position ties up before they commit to it.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Features -->
+<!-- BEGIN: Screenshots -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+<h2 class="text-3xl font-bold mb-3">A Look <span class="text-primary">Inside</span></h2>
+<p class="text-slate-400 mb-10 max-w-2xl">Screenshots from the app.</p>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+<div class="aspect-[9/16] bg-card rounded-3xl border border-white/5 overflow-hidden">
+<img alt="Synthetics & Forex Calculator screenshot 1" class="w-full h-full object-cover" src="assets/projects/synthetics/screenshot1.webp"/>
+</div>
+<div class="aspect-[9/16] bg-card rounded-3xl border border-white/5 overflow-hidden">
+<img alt="Synthetics & Forex Calculator screenshot 2" class="w-full h-full object-cover" src="assets/projects/synthetics/screenshot2.webp"/>
+</div>
+<div class="aspect-[9/16] bg-card rounded-3xl border border-white/5 overflow-hidden">
+<img alt="Synthetics & Forex Calculator screenshot 3" class="w-full h-full object-cover" src="assets/projects/synthetics/screenshot3.webp"/>
+</div>
+</div>
+</section>
+<!-- END: Screenshots -->
+<!-- BEGIN: CTA -->
+<section class="max-w-5xl mx-auto px-6 pb-24">
+<div class="bg-card rounded-[2rem] border border-white/5 p-10 md:p-14 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+<h2 class="text-3xl md:text-4xl font-bold mb-4 relative z-10">Try it on your <span class="text-primary">phone</span></h2>
+<p class="text-slate-400 mb-8 max-w-xl mx-auto relative z-10">The Synthetics &amp; Forex Calculator is free to download on the Google Play Store. Get precise, reliable trading calculations wherever the market takes you.</p>
+<a class="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-dark font-bold rounded-xl hover:bg-white transition-all transform hover:-translate-y-0.5 shadow-lg shadow-primary/10 relative z-10" href="https://play.google.com/store/apps/details?id=com.lapiyano.syntheticsnfxcalculator" target="_blank" rel="noopener">
+        Get it on Google Play
+<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+</div>
+</section>
+<!-- END: CTA -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="py-12 border-t border-white/5 bg-dark">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-slate-500 text-sm">
+        © 2026 <span class="font-bold text-slate-300">Lapiyano Manganhe</span>. All rights reserved.
+      </div>
+<a href="index.html#projects" class="text-primary hover:underline font-bold text-sm">← Back to all projects</a>
+</div>
+</footer>
+<!-- END: Footer -->
+<script>
+    // Theme Toggle Logic (shared with index.html via localStorage)
+    (function() {
+      const htmlElement = document.documentElement;
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        htmlElement.classList.remove('dark');
+        htmlElement.classList.add('light');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        htmlElement.classList.add('dark');
+        htmlElement.classList.remove('light');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        if (htmlElement.classList.contains('dark')) {
+          htmlElement.classList.remove('dark');
+          htmlElement.classList.add('light');
+          localStorage.setItem('theme', 'light');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+        } else {
+          htmlElement.classList.remove('light');
+          htmlElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
